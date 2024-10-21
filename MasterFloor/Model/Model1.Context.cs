@@ -15,11 +15,21 @@ namespace MasterFloor.Model
     
     public partial class MasterFloorDBEntities : DbContext
     {
+        private static MasterFloorDBEntities _context { get; set; }
         public MasterFloorDBEntities()
             : base("name=MasterFloorDBEntities")
         {
         }
-    
+        
+        public static MasterFloorDBEntities GetContext()
+        {
+            if(_context == null)
+            {
+                _context = new MasterFloorDBEntities();
+            }
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

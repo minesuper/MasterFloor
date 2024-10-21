@@ -9,15 +9,29 @@
       Title="PartnersPage">
 
     <Grid Background="White">
-        <ListView>
+        <ListView x:Name="PartnersListView" HorizontalAlignment="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <TextBlock>
-                            <Run Text="{Binding PartnersTypes.Name}"></Run>
-                            <Run Text=" | "></Run>
-                            <Run Text="{Binding Partners.PartnerName}"></Run>
-                        </TextBlock>
+                    <Grid Width="400">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" >
+                            <StackPanel Grid.Column="0">
+                                <TextBlock HorizontalAlignment="Left" FontSize="16" Margin="0 0 0 10">
+                                 <Run Text="{Binding PartnersTypes.Name}"></Run>
+                                 <Run Text=" | "></Run>
+                                 <Run Text="{Binding PartnerName}"></Run>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Text="Директор" Margin="0 0 0 10"></TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Text="{Binding Phone}" Margin="0 0 0 10"></TextBlock>
+                                <TextBlock HorizontalAlignment="Left">
+                                 <Run Text="Рейтинг:"></Run>
+                                 <Run Text="{Binding Rating}"></Run>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

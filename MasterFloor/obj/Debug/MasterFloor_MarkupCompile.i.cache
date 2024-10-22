@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\students\Desktop\MasterFloor\obj\Debug\
+C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\
 MasterFloor
 none
 false
 DEBUG;TRACE
-C:\Users\students\Desktop\MasterFloor\App.xaml
-2-302849501
+C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\App.xaml
+3980530005
 2739969757
-20-22030096
-1835399765
-MainWindow.xaml;Pages\PartnersPage.xaml;
+21-1697696058
+18-697470477
+MainWindow.xaml;Pages\AddEditPartnerPage.xaml;Pages\PartnersPage.xaml;
 
-False
+True
 

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MasterFloor.Model;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,52 +29,85 @@ namespace MasterFloor.Pages
         public PartnersPage()
         {
             InitializeComponent();
-            PartnersListView.ItemsSource = Model.MasterFloorDBEntities.GetContext().Partners.ToList();
+            List<PartnersWithDiscount> list = new List<PartnersWithDiscount>();
+            foreach (Model.Partners item in Model.MasterFloorDBEntities.GetContext().Partners.ToList())
+            {
+                list.Add(new PartnersWithDiscount(item));
+            }
+            PartnersListView.ItemsSource = list;
+        }
+
+        private void EditThisPartner_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage((sender as Button).DataContext as Model.Partners));
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage(null));
         }
     }
     public class PartnersWithDiscount : Model.Partners
     {
-        public int Discount { get; set; }
-        private List<PartnersWithDiscount> AddDiscount(List<Model.Partners> Partners)
+        public decimal Discount { get; set; }
+
+        public PartnersWithDiscount(Model.Partners partner)
         {
-            List<PartnersWithDiscount> NewList = new List<PartnersWithDiscount>();
-            foreach (var partner in Partners)
-            {
-                PartnersWithDiscount NewDiscount = new PartnersWithDiscount();
-                NewDiscount.Streets = partner.Streets;
-                NewDiscount.Discount = 14;
-                NewDiscount.Regions = partner.Regions;
-                NewDiscount.Cities = partner.Cities;
-                NewDiscount.AdresIndex = partner.AdresIndex;
-                NewDiscount.CityId = partner.CityId;
-                NewDiscount.DirectorName = partner.DirectorName;
-                NewDiscount.DirectorSurname = partner.DirectorSurname;
-                NewDiscount.DirectorPatronym = partner.DirectorPatronym;
-                NewDiscount.Rating = partner.Rating;
-                NewDiscount.PartnerTypeId = partner.PartnerTypeId;
-                NewDiscount.PartnerName = partner.PartnerName;
-                NewDiscount.PartnerProducts = partner.PartnerProducts;
-                NewDiscount.HouseNumber = partner.HouseNumber;
-                NewDiscount.IndividualTaxNumber = partner.IndividualTaxNumber;
-                NewDiscount.StreetId = partner.StreetId;
-                NewDiscount.RegionId = partner.RegionId;
-                NewDiscount.Phone = partner.Phone;
-                NewDiscount.Id = partner.Id;
-                NewDiscount.PartnersTypes = partner.PartnersTypes;
-                NewList.Add(NewDiscount);
-            }
-            return NewList;
+            this.Streets = partner.Streets;
+            this.Discount = GetDiscount(partner);
+            this.Regions = partner.Regions;
+            this.Cities = partner.Cities;
+            this.AdresIndex = partner.AdresIndex;
+            this.CityId = partner.CityId;
+            this.DirectorName = partner.DirectorName;
+            this.DirectorSurname = partner.DirectorSurname;
+            this.DirectorPatronym = partner.DirectorPatronym;
+            this.Rating = partner.Rating;
+            this.PartnerTypeId = partner.PartnerTypeId;
+            this.PartnerName = partner.PartnerName;
+            this.PartnerProducts = partner.PartnerProducts;
+            this.HouseNumber = partner.HouseNumber;
+            this.IndividualTaxNumber = partner.IndividualTaxNumber;
+            this.StreetId = partner.StreetId;
+            this.RegionId = partner.RegionId;
+            this.Phone = partner.Phone;
+            this.Id = partner.Id;
+            this.PartnersTypes = partner.PartnersTypes;
+            this.Email = partner.Email;
+        }
+        public PartnersWithDiscount()
+        {
+
         }
         private int GetDiscount(Model.Partners partner)
         {
-            int temp = Model.MasterFloorDBEntities.GetContext().PartnerProducts.
-            var sale = (from p in Model.MasterFloorDBEntities.GetContext().PartnerProducts
-                       let request = from c in Model.MasterFloorDBEntities.GetContext().Products
-                                     where c.Id == p.ProductId
-                                     select c.MinimalCost*p.Count
-                                     where request.Any()
-                                     select p).ToList();
-            return sale.Count;
+            decimal totalCost =
+            (from p in Model.MasterFloorDBEntities.GetContext().Partners
+             join pp in Model.MasterFloorDBEntities.GetContext().PartnerProducts on p.Id equals pp.PartnerId into ppGroup
+             from pp in ppGroup.DefaultIfEmpty()
+             join pr in Model.MasterFloorDBEntities.GetContext().Products on pp.ProductId equals pr.Id into prGroup
+             from pr in prGroup.DefaultIfEmpty()
+             where p.PartnerName == partner.PartnerName
+             select (decimal)(pp.Count) * (decimal)(pr.MinimalCost))
+             .Sum();
+            if (totalCost < 10000)
+            {
+                return 0;
+            }
+            else if(totalCost>=10000 && totalCost<50000)
+            {
+                return 5;
+            }
+            else if (totalCost >= 50000 && totalCost < 300000)
+            {
+                return 10;
+            }
+            else if (totalCost >= 300000)
+            {
+                return 15;
+            }
+
+            return -1;
         }
     }
 }

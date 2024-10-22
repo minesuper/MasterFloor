@@ -8,14 +8,14 @@
         Title="ИС - Мастер пол" Height="600" Width="1000" WindowStartupLocation="CenterScreen" MinHeight="600" MinWidth="1000">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Background="{StaticResource SecondBG}" Grid.Row="0">
             <Image Source="/Resources/Мастер пол.png" HorizontalAlignment="Left"
                 Margin="4"/>
-            <Label Content="Мастер - пол" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"
-                   VerticalAlignment="Center"></Label>
+            <TextBlock Text="Мастер - пол" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"
+                   VerticalAlignment="Center"></TextBlock>
         </Grid>
 
         <Frame x:Name="MainFrame" Grid.Row="1"

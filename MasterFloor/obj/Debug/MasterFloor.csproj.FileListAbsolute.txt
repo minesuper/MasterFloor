@@ -23,3 +23,5 @@ C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\
 C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\MasterFl.AFE6D08C.Up2Date
 C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\MasterFloor.exe
 C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\MasterFloor.pdb
+C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\Pages\AddEditPartnerPage.g.cs
+C:\Users\students\Desktop\Волчие ягодки\MasterFloor\MasterFloor\obj\Debug\Pages\AddEditPartnerPage.baml

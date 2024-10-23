@@ -13,21 +13,21 @@ namespace MasterFloor.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MasterFloorDBEntities : DbContext
+    public partial class MasterFloorDBEntities1 : DbContext
     {
-        private static MasterFloorDBEntities _context { get; set; }
-        public MasterFloorDBEntities()
-            : base("name=MasterFloorDBEntities")
+        private static MasterFloorDBEntities1 _instance;
+        public MasterFloorDBEntities1()
+            : base("name=MasterFloorDBEntities1")
         {
         }
         
-        public static MasterFloorDBEntities GetContext()
+        public static MasterFloorDBEntities1 GetContext()
         {
-            if(_context == null)
+            if(_instance == null)
             {
-                _context = new MasterFloorDBEntities();
+                _instance = new MasterFloorDBEntities1();
             }
-            return _context;
+            return _instance;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

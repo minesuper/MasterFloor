@@ -41,7 +41,7 @@
     <Property Name="CityId" Type="int" Nullable="false" />
     <Property Name="StreetId" Type="int" Nullable="false" />
     <Property Name="HouseNumber" Type="int" Nullable="false" />
-    <Property Name="IndividualTaxNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndividualTaxNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="Rating" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PartnersTypes">

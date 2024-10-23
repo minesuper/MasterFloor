@@ -30,7 +30,7 @@ namespace MasterFloor.Pages
         {
             InitializeComponent();
             List<PartnersWithDiscount> list = new List<PartnersWithDiscount>();
-            foreach (Model.Partners item in Model.MasterFloorDBEntities.GetContext().Partners.ToList())
+            foreach (Model.Partners item in Model.MasterFloorDBEntities1.GetContext().Partners.ToList())
             {
                 list.Add(new PartnersWithDiscount(item));
             }
@@ -82,10 +82,10 @@ namespace MasterFloor.Pages
         private int GetDiscount(Model.Partners partner)
         {
             decimal totalCost =
-            (from p in Model.MasterFloorDBEntities.GetContext().Partners
-             join pp in Model.MasterFloorDBEntities.GetContext().PartnerProducts on p.Id equals pp.PartnerId into ppGroup
+            (from p in Model.MasterFloorDBEntities1.GetContext().Partners
+             join pp in Model.MasterFloorDBEntities1.GetContext().PartnerProducts on p.Id equals pp.PartnerId into ppGroup
              from pp in ppGroup.DefaultIfEmpty()
-             join pr in Model.MasterFloorDBEntities.GetContext().Products on pp.ProductId equals pr.Id into prGroup
+             join pr in Model.MasterFloorDBEntities1.GetContext().Products on pp.ProductId equals pr.Id into prGroup
              from pr in prGroup.DefaultIfEmpty()
              where p.PartnerName == partner.PartnerName
              select (decimal)(pp.Count) * (decimal)(pr.MinimalCost))

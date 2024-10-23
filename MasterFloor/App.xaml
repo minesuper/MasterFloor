@@ -19,6 +19,7 @@
 
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Segoe UI"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="35"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
@@ -28,12 +29,14 @@
             <Setter Property="FontFamily" Value="Segoe UI"></Setter>
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="35"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
 
         <Style TargetType="DatePicker">
             <Setter Property="FontFamily" Value="Segoe UI"></Setter>
             <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="Height" Value="35"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
@@ -41,6 +44,7 @@
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Segoe UI"></Setter>
             <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="Height" Value="35"></Setter>
             <Setter Property="Background" Value="{StaticResource HighlightBG}"></Setter>
         </Style>

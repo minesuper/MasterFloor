@@ -45,7 +45,7 @@
     <Property Name="CityId" Type="Int32" Nullable="false" />
     <Property Name="StreetId" Type="Int32" Nullable="false" />
     <Property Name="HouseNumber" Type="Int32" Nullable="false" />
-    <Property Name="IndividualTaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IndividualTaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Rating" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cities" Relationship="Self.FK_Partners_Cities" FromRole="Partners" ToRole="Cities" />
     <NavigationProperty Name="PartnerProducts" Relationship="Self.FK_PartnerProducts_Partners" FromRole="Partners" ToRole="PartnerProducts" />
@@ -196,7 +196,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MasterFloorDBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MasterFloorDBEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cities" EntityType="Self.Cities" />
     <EntitySet Name="MaterialTypes" EntityType="Self.MaterialTypes" />
     <EntitySet Name="PartnerProducts" EntityType="Self.PartnerProducts" />

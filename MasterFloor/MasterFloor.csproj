@@ -112,6 +112,9 @@
     <Compile Include="Pages\AddEditPartnerPage.xaml.cs">
       <DependentUpon>AddEditPartnerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HistoryView.xaml.cs">
+      <DependentUpon>HistoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PartnersPage.xaml.cs">
       <DependentUpon>PartnersPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AddEditPartnerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HistoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

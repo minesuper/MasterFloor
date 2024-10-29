@@ -39,12 +39,25 @@ namespace MasterFloor.Pages
 
         private void EditThisPartner_Click(object sender, RoutedEventArgs e)
         {
-            Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage((sender as Button).DataContext as Model.Partners));
+            Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage((sender as Button).DataContext as PartnersWithDiscount));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage(null));
+        }
+
+        private void PartnersListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBoxResult NotificationOnPreviewHistory = MessageBox.Show("Посмотреть историю реализации продукции?", "Уведомление!", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if(NotificationOnPreviewHistory == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                Utils.Navigation.CurrentFrame.Navigate(new Pages.HistoryView((sender as ListViewItem).DataContext as PartnersWithDiscount));
+            }
         }
     }
     public class PartnersWithDiscount : Model.Partners
@@ -75,26 +88,18 @@ namespace MasterFloor.Pages
             this.PartnersTypes = partner.PartnersTypes;
             this.Email = partner.Email;
         }
-        public PartnersWithDiscount()
-        {
-
-        }
         private int GetDiscount(Model.Partners partner)
         {
-            decimal totalCost =
-            (from p in Model.MasterFloorDBEntities1.GetContext().Partners
-             join pp in Model.MasterFloorDBEntities1.GetContext().PartnerProducts on p.Id equals pp.PartnerId into ppGroup
-             from pp in ppGroup.DefaultIfEmpty()
-             join pr in Model.MasterFloorDBEntities1.GetContext().Products on pp.ProductId equals pr.Id into prGroup
-             from pr in prGroup.DefaultIfEmpty()
-             where p.PartnerName == partner.PartnerName
-             select (decimal)(pp.Count) * (decimal)(pr.MinimalCost))
-             .Sum();
-            if (totalCost < 10000)
-            {
-                return 0;
-            }
-            else if(totalCost>=10000 && totalCost<50000)
+            decimal? totalCost =
+                (from p in Model.MasterFloorDBEntities1.GetContext().Partners
+                 join pp in Model.MasterFloorDBEntities1.GetContext().PartnerProducts on p.Id equals pp.PartnerId into ppGroup
+                 from pp in ppGroup.DefaultIfEmpty()
+                 join pr in Model.MasterFloorDBEntities1.GetContext().Products on pp.ProductId equals pr.Id into prGroup
+                 from pr in prGroup.DefaultIfEmpty()
+                 where p.PartnerName == partner.PartnerName
+                 select (decimal?)(pp.Count) * (decimal?)(pr.MinimalCost))
+                 .Sum();
+            if (totalCost >= 10000 && totalCost < 50000)
             {
                 return 5;
             }
@@ -107,7 +112,7 @@ namespace MasterFloor.Pages
                 return 15;
             }
 
-            return -1;
+            return 0;
         }
     }
 }

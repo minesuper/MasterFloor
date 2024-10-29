@@ -38,7 +38,7 @@
             <TextBlock Text="Номер телефона:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
             <TextBlock Text="Email:" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
 
-            <TextBox x:Name="TitleTB" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="NameTB" Text="{Binding PartnerName}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
             <ComboBox x:Name="TypeCB" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" DisplayMemberPath="Name"></ComboBox>
             <TextBox x:Name="RatingTB" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
             <TextBox x:Name="AdressTB" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>

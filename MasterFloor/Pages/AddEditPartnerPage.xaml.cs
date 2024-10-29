@@ -30,13 +30,13 @@ namespace MasterFloor.Pages
             set { isAddFlag = value; }
         }
 
-        public AddEditPartnerPage(Model.Partners SelectedPartner)
+        public AddEditPartnerPage(PartnersWithDiscount SelectedPartner)
         {
             InitializeComponent();
             OnStart(SelectedPartner);
             DataContext = currentPartner;
         }
-        private void OnStart(Model.Partners SelectedPartner)
+        private void OnStart(PartnersWithDiscount SelectedPartner)
         {
             TypeCB.ItemsSource = Model.MasterFloorDBEntities1.GetContext().PartnersTypes.ToList();
             if (SelectedPartner == null)
@@ -46,8 +46,8 @@ namespace MasterFloor.Pages
             }
             else
             {
-                currentPartner = SelectedPartner;
-                TitleTB.Text = currentPartner.PartnerName;
+                currentPartner = Model.MasterFloorDBEntities1.GetContext().Partners.Where(d => d.Id == SelectedPartner.Id).First();
+                NameTB.Text = currentPartner.PartnerName;
                 RatingTB.Text = currentPartner.Rating.ToString();
                 AdressTB.Text = $"{currentPartner.AdresIndex},{currentPartner.Regions.Name},{currentPartner.Cities.Name},{currentPartner.Streets.Name},{currentPartner.HouseNumber}";
                 FIOTB.Text = $"{currentPartner.DirectorSurname} {currentPartner.DirectorName} {currentPartner.DirectorPatronym}";
@@ -70,7 +70,7 @@ namespace MasterFloor.Pages
             try
             {
                 StringBuilder errors = new StringBuilder();
-                string title = TitleTB.Text;
+                string title = NameTB.Text;
                 string rating = RatingTB.Text;
                 string phone = PhoneTB.Text;
                 string email = EmailTB.Text;
@@ -93,10 +93,10 @@ namespace MasterFloor.Pages
                 if (string.IsNullOrEmpty(phone)) { errors.AppendLine("Заполните телефон партнера"); }
                 else
                 {
-                    //if (!CheckPhonePattern(phone))
-                    //{
-                    //    errors.AppendLine("Телефон не по паттерну +7(###)-###-##-##");
-                    //}
+                    if (!CheckPhonePattern(phone))
+                    {
+                        errors.AppendLine("Телефон не по паттерну +7(###)-###-##-##");
+                    }
                 }
                 if (string.IsNullOrEmpty(email)) { errors.AppendLine("Заполните email партнера"); }
                 if (string.IsNullOrEmpty(Adress)) { errors.AppendLine("Заполните адрес партнера"); }
@@ -122,25 +122,26 @@ namespace MasterFloor.Pages
                     NewPartner.Rating = Convert.ToInt32(rating);
                     string[] adressTemp = Adress.Split(',');
                     NewPartner.AdresIndex = adressTemp[0];
-                    int? regionTemp = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault().Id;
+                    var regionTemp = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault();
                     if(regionTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Regions.Add(new Model.Regions() { Name = adressTemp[1] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        NewPartner.RegionId = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).First().Id;
                     }
-                    NewPartner.RegionId = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault().Id;
-                    int? cityTemp = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault().Id;
+                    var cityTemp = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault();
                     if (cityTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Cities.Add(new Model.Cities() { Name = adressTemp[2] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        NewPartner.CityId = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).First().Id;
                     }
-                    NewPartner.CityId = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault().Id;
-                    int? streetTemp = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault().Id;
+                    var streetTemp = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault();
                     if (streetTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Streets.Add(new Model.Streets() { Name = adressTemp[3] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        NewPartner.StreetId = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).First().Id;
                     }
                     NewPartner.StreetId = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault().Id;
                     NewPartner.HouseNumber = Convert.ToInt32(adressTemp[4]);
@@ -150,7 +151,6 @@ namespace MasterFloor.Pages
                 }
                 else
                 {
-                    currentPartner.PartnerName = title;
                     currentPartner.DirectorName = fio.Split(' ')[1];
                     currentPartner.DirectorSurname = fio.Split(' ')[0];
                     currentPartner.DirectorPatronym = fio.Split(' ')[2];
@@ -159,36 +159,47 @@ namespace MasterFloor.Pages
                     currentPartner.Phone = phone;
                     currentPartner.IndividualTaxNumber = null;
                     currentPartner.Rating = Convert.ToInt32(rating);
-                    string[] adressTemp = Adress.Split(',');
+                    var adressTemp = Adress.Split(',');
                     currentPartner.AdresIndex = adressTemp[0];
-                    int? regionTemp = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault().Id;
+                    var regionTemp = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault();
                     if (regionTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Regions.Add(new Model.Regions() { Name = adressTemp[1] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        currentPartner.RegionId = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).First().Id;
                     }
-                    currentPartner.RegionId = Model.MasterFloorDBEntities1.GetContext().Regions.ToList().Where(x => x.Name == adressTemp[1]).FirstOrDefault().Id;
-                    int? cityTemp = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault().Id;
+                    else
+                    {
+                        currentPartner.RegionId = regionTemp.Id;
+                    }
+                    var cityTemp = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault();
                     if (cityTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Cities.Add(new Model.Cities() { Name = adressTemp[2] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        currentPartner.CityId = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).First().Id;
                     }
-                    currentPartner.CityId = Model.MasterFloorDBEntities1.GetContext().Cities.ToList().Where(x => x.Name == adressTemp[2]).FirstOrDefault().Id;
-                    int? streetTemp = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault().Id;
+                    else
+                    {
+                        currentPartner.CityId = cityTemp.Id;
+                    }
+                    var streetTemp = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault();
                     if (streetTemp == null)
                     {
                         Model.MasterFloorDBEntities1.GetContext().Streets.Add(new Model.Streets() { Name = adressTemp[3] });
                         Model.MasterFloorDBEntities1.GetContext().SaveChanges();
+                        currentPartner.StreetId = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).First().Id;
                     }
-                    currentPartner.StreetId = Model.MasterFloorDBEntities1.GetContext().Streets.ToList().Where(x => x.Name == adressTemp[3]).FirstOrDefault().Id;
+                    else
+                    {
+                        currentPartner.StreetId = streetTemp.Id;
+                    }
                     currentPartner.HouseNumber = Convert.ToInt32(adressTemp[4]);
-
-                    Model.MasterFloorDBEntities1.GetContext().SaveChanges();
                 }
+
+                Model.MasterFloorDBEntities1.GetContext().SaveChanges();
                 Utils.Navigation.CurrentFrame.RemoveBackEntry();
                 Utils.Navigation.CurrentFrame.Navigate(new Pages.PartnersPage());
-                //TODO: Не работает сохранение старого бога + add
             }
             catch (Exception ex)
             {

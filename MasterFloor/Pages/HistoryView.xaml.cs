@@ -23,6 +23,15 @@ namespace MasterFloor.Pages
         public HistoryView(Model.Partners user)
         {
             InitializeComponent();
+            HistoryListView.ItemsSource = Model.MasterFloorDBEntities1.GetContext().PartnerProducts.Where(d => d.PartnerId == user.Id).ToList();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(Utils.Navigation.CurrentFrame.CanGoBack)
+            {
+                Utils.Navigation.CurrentFrame.GoBack();
+            }
         }
     }
 }

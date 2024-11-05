@@ -47,17 +47,9 @@ namespace MasterFloor.Pages
             Utils.Navigation.CurrentFrame.Navigate(new Pages.AddEditPartnerPage(null));
         }
 
-        private void PartnersListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void HistoryThisPartner_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult NotificationOnPreviewHistory = MessageBox.Show("Посмотреть историю реализации продукции?", "Уведомление!", MessageBoxButton.YesNo, MessageBoxImage.Information);
-            if(NotificationOnPreviewHistory == MessageBoxResult.No)
-            {
-                return;
-            }
-            else
-            {
-                Utils.Navigation.CurrentFrame.Navigate(new Pages.HistoryView((sender as ListViewItem).DataContext as PartnersWithDiscount));
-            }
+            Utils.Navigation.CurrentFrame.Navigate(new Pages.HistoryView((sender as Button).DataContext as Model.Partners));
         }
     }
     public class PartnersWithDiscount : Model.Partners

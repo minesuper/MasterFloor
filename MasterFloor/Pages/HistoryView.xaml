@@ -9,6 +9,37 @@
       Title="HistoryView">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="HistoryListView" HorizontalContentAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border HorizontalAlignment="Center" Margin="20" BorderBrush="Gray" BorderThickness="1" Width="600" Height="150">
+                        <Grid Margin="20" HorizontalAlignment="Left">
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Left" FontSize="16" Margin="0 0 0 10"  TextWrapping="Wrap">
+                                  <Run Text="Наименование:"></Run>
+                                  <Run Text="{Binding Products.Name}"></Run>
+                                </TextBlock>
+                                <TextBlock TextAlignment="Left" FontSize="16" Margin="0 0 0 10" TextWrapping="Wrap">
+                                  <Run Text="Количество:"></Run>
+                                  <Run Text="{Binding Count}"></Run>
+                                    <Run Text="шт."></Run>
+                                </TextBlock>
+                                <TextBlock TextAlignment="Left" FontSize="16" TextWrapping="Wrap">
+                                  <Run Text="Дата продажи:"></Run>
+                                  <Run Text="{Binding SaleDate, StringFormat=d}"></Run>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="BackButton" Click="BackButton_Click" Content="Назад" HorizontalAlignment="Left" Margin="20 0 0 0" VerticalAlignment="Center" Grid.Row="1"></Button>
     </Grid>
 </Page>

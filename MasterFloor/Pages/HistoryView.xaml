@@ -14,7 +14,9 @@
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="HistoryListView" HorizontalContentAlignment="Center">
+        <TextBlock x:Name="EmptyHistoryTB" Text="История пуста!" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="42"></TextBlock>
+
+        <ListView x:Name="HistoryListView" HorizontalContentAlignment="Center" Visibility="Hidden">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border HorizontalAlignment="Center" Margin="20" BorderBrush="Gray" BorderThickness="1" Width="600" Height="150">

@@ -196,7 +196,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MasterFloorDBEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MasterFloorDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cities" EntityType="Self.Cities" />
     <EntitySet Name="MaterialTypes" EntityType="Self.MaterialTypes" />
     <EntitySet Name="PartnerProducts" EntityType="Self.PartnerProducts" />

@@ -83,3 +83,32 @@ C:\Users\students\Desktop\mg\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView
 C:\Users\students\Desktop\mg\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView.baml
 C:\Users\gyakovlev\Desktop\Новая папка\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView.g.cs
 C:\Users\gyakovlev\Desktop\Новая папка\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\MasterFloor.exe.config
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\MasterFloor.exe
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\MasterFloor.pdb
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\EntityFramework.dll
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\EntityFramework.xml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.csproj.AssemblyReference.cache
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MainWindow.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\AddEditPartnerPage.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\PartnersPage.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\App.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor_Content.g.cs
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor_MarkupCompile.cache
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor_MarkupCompile.lref
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\App.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MainWindow.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\AddEditPartnerPage.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\HistoryView.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\Pages\PartnersPage.baml
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.g.resources
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.Properties.Resources.resources
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.csproj.GenerateResource.cache
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.csproj.CoreCompileInputs.cache
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.csproj.CopyComplete
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.exe
+C:\Users\lisav\Desktop\МастерRoof\MasterFloor\MasterFloor\obj\Debug\MasterFloor.pdb

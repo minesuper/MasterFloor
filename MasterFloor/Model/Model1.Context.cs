@@ -12,29 +12,30 @@ namespace MasterFloor.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class MasterFloorDBEntities1 : DbContext
+
+    public partial class MasterFloorDBEntities : DbContext
     {
-        private static MasterFloorDBEntities1 _instance;
-        public MasterFloorDBEntities1()
-            : base("name=MasterFloorDBEntities1")
+        private static MasterFloorDBEntities _instance;
+        public MasterFloorDBEntities()
+            : base("name=MasterFloorDBEntities")
         {
         }
-        
-        public static MasterFloorDBEntities1 GetContext()
+
+        public static MasterFloorDBEntities GetContext()
         {
-            if(_instance == null)
+            if (_instance == null)
             {
-                _instance = new MasterFloorDBEntities1();
+                _instance = new MasterFloorDBEntities();
             }
             return _instance;
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Cities> Cities { get; set; }
         public virtual DbSet<MaterialTypes> MaterialTypes { get; set; }
         public virtual DbSet<PartnerProducts> PartnerProducts { get; set; }

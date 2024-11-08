@@ -429,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MasterFloorDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MasterFloorDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cities" EntityType="Self.Cities" />
           <EntitySet Name="MaterialTypes" EntityType="Self.MaterialTypes" />
           <EntitySet Name="PartnerProducts" EntityType="Self.PartnerProducts" />
@@ -477,7 +477,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище MasterFloorDBModelContainer" CdmEntityContainer="MasterFloorDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MasterFloorDBModelContainer" CdmEntityContainer="MasterFloorDBEntities">
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="MasterFloorDBModel.Cities">
               <MappingFragment StoreEntitySet="Cities">

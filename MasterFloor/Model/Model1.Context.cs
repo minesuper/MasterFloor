@@ -12,7 +12,7 @@ namespace MasterFloor.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class MasterFloorDBEntities : DbContext
     {
         private static MasterFloorDBEntities _instance;
@@ -30,12 +30,11 @@ namespace MasterFloor.Model
             return _instance;
         }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Cities> Cities { get; set; }
         public virtual DbSet<MaterialTypes> MaterialTypes { get; set; }
         public virtual DbSet<PartnerProducts> PartnerProducts { get; set; }

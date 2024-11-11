@@ -12,7 +12,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DefectPercent" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="DefectPercent" Type="decimal" Precision="4" Scale="4" Nullable="false" />
   </EntityType>
   <EntityType Name="PartnerProducts">
     <Key>

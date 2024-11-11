@@ -13,7 +13,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DefectPercent" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="DefectPercent" Type="Decimal" Precision="4" Scale="4" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Products_MaterialTypes" FromRole="MaterialTypes" ToRole="Products" />
   </EntityType>
   <EntityType Name="PartnerProducts">

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76939a6b75ce4fa9b466f10367935926" Name="Diagram1">
+        <EntityTypeShape EntityType="MasterFloorDBModel.Cities" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.MaterialTypes" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.PartnerProducts" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.Partners" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.PartnersTypes" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.Products" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.ProductTypes" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.Regions" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFloorDBModel.Streets" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Partners_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Products_MaterialTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_PartnerProducts_Partners" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_PartnerProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Partners_PartnersTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Partners_Regions" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Partners_Streets" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFloorDBModel.FK_Products_ProductTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -29,7 +29,11 @@
                                  <Run Text=" | "></Run>
                                  <Run Text="{Binding PartnerName}"></Run>
                                 </TextBlock>
-                                <TextBlock HorizontalAlignment="Left" Text="Директор" Margin="0 0 0 10"></TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="0 0 0 10">
+                                    <Run Text="{Binding DirectorSurname}"></Run>
+                                    <Run Text="{Binding DirectorName}"></Run>
+                                    <Run Text="{Binding DirectorPatronym}"></Run>
+                                </TextBlock>
                                 <TextBlock HorizontalAlignment="Left" Text="{Binding Phone}" Margin="0 0 0 10"></TextBlock>
                                 <TextBlock HorizontalAlignment="Left">
                                  <Run Text="Рейтинг:"></Run>

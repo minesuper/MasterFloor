@@ -10,6 +10,8 @@ namespace MaterialCountityCalculation
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(MaterialCalculation.CountityMaterialCalc(1, 1, 3, 12.8m, 13.9m));
+            Console.Read();
         }
     }
 }

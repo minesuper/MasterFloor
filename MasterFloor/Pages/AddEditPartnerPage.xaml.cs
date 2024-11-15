@@ -49,7 +49,8 @@ namespace MasterFloor.Pages
                 currentPartner = Model.MasterFloorDBEntities.GetContext().Partners.Where(d => d.Id == SelectedPartner.Id).First();
                 NameTB.Text = currentPartner.PartnerName;
                 RatingTB.Text = currentPartner.Rating.ToString();
-                AdressTB.Text = $"{currentPartner.AdresIndex},{currentPartner.Regions.Name},{currentPartner.Cities.Name},{currentPartner.Streets.Name},{currentPartner.HouseNumber}";
+                AdressTB.Text = $"{currentPartner.AdresIndex},{currentPartner.Regions.Name},{currentPartner.Cities.Name}," +
+                    $"{currentPartner.Streets.Name},{currentPartner.HouseNumber}";
                 FIOTB.Text = $"{currentPartner.DirectorSurname} {currentPartner.DirectorName} {currentPartner.DirectorPatronym}";
                 PhoneTB.Text = currentPartner.Phone;
                 EmailTB.Text = currentPartner.Email;
